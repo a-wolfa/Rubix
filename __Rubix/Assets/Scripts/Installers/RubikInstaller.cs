@@ -19,6 +19,10 @@ namespace Installers
             Container.Bind<CubeController>()
                 .FromComponentInHierarchy()
                 .AsSingle();
+            
+            Container.Bind<CameraController>()
+                .FromComponentInHierarchy()
+                .AsSingle();
         }
     }
 }

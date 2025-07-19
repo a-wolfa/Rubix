@@ -173,6 +173,8 @@ namespace Controllers
         
         private void OnDrawGizmos()
         {
+            if (selectedPivot == null) return;
+            
             Gizmos.color = Color.red;
             Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position + selectedPivot.bounds.center, selectedPivot.transform.rotation, Vector3.one);
             Gizmos.matrix = rotationMatrix;
