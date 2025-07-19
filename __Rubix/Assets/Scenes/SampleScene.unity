@@ -388,8 +388,8 @@ GameObject:
   - component: {fileID: 433806825}
   - component: {fileID: 433806826}
   - component: {fileID: 433806827}
-  m_Layer: 0
-  m_Name: White
+  m_Layer: 6
+  m_Name: BluePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,8 +455,8 @@ GameObject:
   - component: {fileID: 721963572}
   - component: {fileID: 721963573}
   - component: {fileID: 721963574}
-  m_Layer: 0
-  m_Name: Yellow
+  m_Layer: 6
+  m_Name: GreenPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,8 +522,8 @@ GameObject:
   - component: {fileID: 736490114}
   - component: {fileID: 736490115}
   - component: {fileID: 736490116}
-  m_Layer: 0
-  m_Name: Orange
+  m_Layer: 6
+  m_Name: OrangePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -638,8 +638,8 @@ GameObject:
   - component: {fileID: 1112894493}
   - component: {fileID: 1112894494}
   - component: {fileID: 1112894495}
-  m_Layer: 0
-  m_Name: Red
+  m_Layer: 6
+  m_Name: RedPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -705,8 +705,8 @@ GameObject:
   - component: {fileID: 1146629907}
   - component: {fileID: 1146629908}
   - component: {fileID: 1146629909}
-  m_Layer: 0
-  m_Name: Green
+  m_Layer: 6
+  m_Name: WhitePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -822,6 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e48431c318e490b8bd2b5fd22d2aec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeControllerPrefab: {fileID: 919132148919992402}
 --- !u!114 &1542895710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,8 +912,8 @@ GameObject:
   - component: {fileID: 1754449511}
   - component: {fileID: 1754449512}
   - component: {fileID: 1754449513}
-  m_Layer: 0
-  m_Name: Blue
+  m_Layer: 6
+  m_Name: YellowPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -991,7 +992,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089405701}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1005,7 +1006,7 @@ Transform:
   - {fileID: 1717131241}
   - {fileID: 1451702032}
   m_Father: {fileID: 543450652860537576}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &683273988017197
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1337,7 +1338,7 @@ GameObject:
   - component: {fileID: 2050809773895244478}
   m_Layer: 3
   m_Name: RB
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2104,7 +2105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652860537576}
-  - component: {fileID: 919132148919992403}
+  - component: {fileID: 919132148919992404}
   m_Layer: 0
   m_Name: 'Rubik 3_3 '
   m_TagString: Untagged
@@ -2112,7 +2113,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &919132148919992403
+--- !u!114 &919132148919992404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2121,17 +2122,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 919132148919992402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8686c1a8c30cb0148a9ef78cccfaf6e0, type: 3}
+  m_Script: {fileID: 11500000, guid: c1ccfe83742c43e6886a827fe74b4c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pivots:
-  - {fileID: 1112894492}
-  - {fileID: 736490113}
-  - {fileID: 721963571}
-  - {fileID: 433806824}
-  - {fileID: 1146629906}
-  - {fileID: 1754449510}
-  selectedPivot: 0
+  cubie:
+    serializedVersion: 2
+    m_Bits: 8
+  pivot:
+    serializedVersion: 2
+    m_Bits: 64
+  selectedPivot: {fileID: 1112894494}
 --- !u!33 &932514157031129021
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2679,7 +2679,7 @@ GameObject:
   - component: {fileID: 5386575051471021175}
   m_Layer: 3
   m_Name: WBO
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2789,7 +2789,7 @@ GameObject:
   - component: {fileID: 8897240366577608123}
   m_Layer: 3
   m_Name: O
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2870,7 +2870,7 @@ GameObject:
   - component: {fileID: 4524298505353359721}
   m_Layer: 3
   m_Name: BY
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3111,7 +3111,7 @@ GameObject:
   - component: {fileID: 2898394800902902468}
   m_Layer: 3
   m_Name: WO
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3209,9 +3209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &2076850631194186098
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,7 +3224,7 @@ GameObject:
   - component: {fileID: 8482381505468684842}
   m_Layer: 3
   m_Name: OG
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3420,7 +3417,7 @@ GameObject:
   - component: {fileID: 8567717000148658787}
   m_Layer: 3
   m_Name: WG
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3747,9 +3744,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!4 &2941352426554126835
 Transform:
   m_ObjectHideFlags: 0
@@ -4106,7 +4100,7 @@ GameObject:
   - component: {fileID: 8542164414283151180}
   m_Layer: 3
   m_Name: RY
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4756,7 +4750,7 @@ GameObject:
   - component: {fileID: 6772912780571895005}
   m_Layer: 3
   m_Name: GY
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4844,7 +4838,7 @@ GameObject:
   - component: {fileID: 4356877828125833045}
   m_Layer: 3
   m_Name: Y
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4882,9 +4876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!4 &4363266974673177141
 Transform:
   m_ObjectHideFlags: 0
@@ -5021,7 +5012,7 @@ GameObject:
   - component: {fileID: 8906773799899872726}
   m_Layer: 3
   m_Name: GRY
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5091,9 +5082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!33 &4575050369817758794
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5472,7 +5460,7 @@ GameObject:
   - component: {fileID: 5252682845616273693}
   m_Layer: 3
   m_Name: WR
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5510,9 +5498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!23 &5266119471677489557
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5685,9 +5670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &5444727773200007031
 GameObject:
   m_ObjectHideFlags: 0
@@ -5703,7 +5685,7 @@ GameObject:
   - component: {fileID: 6490625522262644527}
   m_Layer: 3
   m_Name: OGY
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5989,7 +5971,7 @@ GameObject:
   - component: {fileID: 6014503084207336772}
   m_Layer: 3
   m_Name: WB
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6027,9 +6009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!23 &6027543246537679095
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6362,7 +6341,7 @@ GameObject:
   - component: {fileID: 6461109676874571690}
   m_Layer: 3
   m_Name: OY
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6417,9 +6396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!33 &6464393433433769340
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6487,9 +6463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!4 &6592560982373486750
 Transform:
   m_ObjectHideFlags: 0
@@ -6659,9 +6632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!33 &6830571861665739830
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6857,7 +6827,7 @@ GameObject:
   - component: {fileID: 7041628270997576160}
   m_Layer: 3
   m_Name: WRB
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6895,9 +6865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &7045030353883102929
 GameObject:
   m_ObjectHideFlags: 0
@@ -6988,7 +6955,7 @@ GameObject:
   - component: {fileID: 7178114112534343725}
   m_Layer: 3
   m_Name: W
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7026,9 +6993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &7183117985813019527
 GameObject:
   m_ObjectHideFlags: 0
@@ -7044,7 +7008,7 @@ GameObject:
   - component: {fileID: 8628502785953946522}
   m_Layer: 3
   m_Name: BOY
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7226,7 +7190,7 @@ GameObject:
   - component: {fileID: 8401952775663971395}
   m_Layer: 3
   m_Name: BO
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7577,7 +7541,7 @@ GameObject:
   - component: {fileID: 8009987137161039819}
   m_Layer: 3
   m_Name: WGR
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7615,9 +7579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!33 &8010252909757630683
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7885,9 +7846,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &8416272008758394086
 GameObject:
   m_ObjectHideFlags: 0
@@ -7903,7 +7861,7 @@ GameObject:
   - component: {fileID: 8544783547767675600}
   m_Layer: 3
   m_Name: GR
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8011,9 +7969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &8485173162317372283
 GameObject:
   m_ObjectHideFlags: 0
@@ -8029,7 +7984,7 @@ GameObject:
   - component: {fileID: 8485173162317372285}
   m_Layer: 3
   m_Name: WOG
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8067,9 +8022,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!4 &8494251015345418182
 Transform:
   m_ObjectHideFlags: 0
@@ -8153,9 +8105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!23 &8544783547767675598
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8234,9 +8183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!23 &8567717000148658785
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8315,9 +8261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!4 &8589026182990909952
 Transform:
   m_ObjectHideFlags: 0
@@ -8411,9 +8354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!33 &8678946765838679956
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8437,7 +8377,7 @@ GameObject:
   - component: {fileID: 8707273952245775637}
   m_Layer: 3
   m_Name: G
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8475,9 +8415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &8757042445619109479
 GameObject:
   m_ObjectHideFlags: 0
@@ -8493,7 +8430,7 @@ GameObject:
   - component: {fileID: 8894691112632451587}
   m_Layer: 3
   m_Name: B
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8710,9 +8647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!33 &8897240366577608121
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8754,9 +8688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!4 &8906773799899872724
 Transform:
   m_ObjectHideFlags: 0
@@ -8808,9 +8739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!23 &9004838622528977456
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8916,7 +8844,7 @@ GameObject:
   - component: {fileID: 9014776605275725458}
   m_Layer: 3
   m_Name: R
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8954,9 +8882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &9017328541167813278
 GameObject:
   m_ObjectHideFlags: 0
@@ -8998,7 +8923,7 @@ GameObject:
   - component: {fileID: 9141816029626028567}
   m_Layer: 3
   m_Name: RBY
-  m_TagString: Untagged
+  m_TagString: Cubie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9036,9 +8961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8aaa900feef42873a6f628b3f4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubieLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
