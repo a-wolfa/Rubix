@@ -12,7 +12,6 @@ namespace Rubik
 
         public void Rotate(Vector3 rotationAxis, float angle)
         {
-            // Rotate around the specified axis
             GameObject pivot = pivots[selectedPivot];
             PivotController pivotController = pivot.GetComponent<PivotController>();
             Debug.Log(pivot.name);

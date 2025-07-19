@@ -106,66 +106,66 @@ namespace Rubik
             {
                 if (direction is "Up" or "Down")
                 {
-                    pivotIndex = box.center.x < 0 ? (int)Pivot.Orange : (int)Pivot.Red;
+                    pivotIndex = box.center.x < 0 ? (int)PivotType.Orange : (int)PivotType.Red;
                 }
                 else if (direction is "Right" or "Left")
                 {
-                    pivotIndex = box.center.y < 0 ? (int)Pivot.Green : (int)Pivot.Blue;
+                    pivotIndex = box.center.y < 0 ? (int)PivotType.Green : (int)PivotType.Blue;
                 }
             }
             if (normal == Vector3.forward)
             {
                 if (direction is "Up" or "Down")
                 {
-                    pivotIndex = box.center.x < 0 ? (int)Pivot.Orange : (int)Pivot.Red;
+                    pivotIndex = box.center.x < 0 ? (int)PivotType.Orange : (int)PivotType.Red;
                 }
                 else if (direction is "Right" or "Left")
                 {
-                    pivotIndex = box.center.y < 0 ? (int)Pivot.Green : (int)Pivot.Blue;
+                    pivotIndex = box.center.y < 0 ? (int)PivotType.Green : (int)PivotType.Blue;
                 }
             }
             if (normal == Vector3.up)
             {
                 if (direction is "Right" or "Left")
                 {
-                    pivotIndex = box.center.z < 0 ? (int)Pivot.Yellow : (int)Pivot.White;
+                    pivotIndex = box.center.z < 0 ? (int)PivotType.Yellow : (int)PivotType.White;
                 }
                 else if (direction is "Up" or "Down")
                 {
-                    pivotIndex = box.center.x < 0 ? (int)Pivot.Green : (int)Pivot.Blue;
+                    pivotIndex = box.center.x < 0 ? (int)PivotType.Green : (int)PivotType.Blue;
                 }
             }
             if (normal == Vector3.down)
             {
                 if (direction is "Right" or "Left")
                 {
-                    pivotIndex = box.center.z < 0 ? (int)Pivot.White : (int)Pivot.Yellow;
+                    pivotIndex = box.center.z < 0 ? (int)PivotType.White : (int)PivotType.Yellow;
                 }
                 else if (direction is "Up" or "Down")
                 {
-                    pivotIndex = box.center.x < 0 ? (int)Pivot.Orange : (int)Pivot.Red;
+                    pivotIndex = box.center.x < 0 ? (int)PivotType.Orange : (int)PivotType.Red;
                 }
             }
             if (normal == Vector3.right)
             {
                 if (direction is "Up" or "Down")
                 {
-                    pivotIndex = box.center.z < 0 ? (int)Pivot.White : (int)Pivot.Yellow;
+                    pivotIndex = box.center.z < 0 ? (int)PivotType.White : (int)PivotType.Yellow;
                 }
                 else if (direction is "Right" or "Left")
                 {
-                    pivotIndex = box.center.y < 0 ? (int)Pivot.Green : (int)Pivot.Blue;
+                    pivotIndex = box.center.y < 0 ? (int)PivotType.Green : (int)PivotType.Blue;
                 }
             }
             if (normal == Vector3.left)
             {
                 if (direction is "Up" or "Down")
                 {
-                    pivotIndex = box.center.z < 0 ? (int)Pivot.White : (int)Pivot.Yellow;
+                    pivotIndex = box.center.z < 0 ? (int)PivotType.White : (int)PivotType.Yellow;
                 }
                 else if (direction is "Right" or "Left")
                 {
-                    pivotIndex = box.center.y < 0 ? (int)Pivot.Green : (int)Pivot.Blue;
+                    pivotIndex = box.center.y < 0 ? (int)PivotType.Green : (int)PivotType.Blue;
                 }
             }
 

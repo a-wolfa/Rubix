@@ -1,6 +1,6 @@
 namespace Consts
 {
-    public enum Pivot
+    public enum PivotType
     {
         Red,
         Orange,
