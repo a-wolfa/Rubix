@@ -37,8 +37,8 @@ namespace Controllers
 
         void Start()
         {
-            _yaw = 0;
-            _pitch = 0;
+            _yaw = _camera.transform.rotation.eulerAngles.y;
+            _pitch = _camera.transform.rotation.eulerAngles.x;
         }
 
         private void OnClick()

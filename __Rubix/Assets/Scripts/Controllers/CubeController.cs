@@ -65,11 +65,7 @@ namespace Controllers
                                                          cubieHitCollider.bounds.extents, 
                                                          cubieHitCollider.transform.rotation,
                                                          pivot);
-
-            foreach (var overlapping in _overlappingPivots)
-            {
-                Debug.Log(overlapping.name);
-            }
+            
         }
 
         private void OnRelease()
@@ -102,36 +98,54 @@ namespace Controllers
 
         private void PerformRotation(Vector2 dragVector)
         {
-            var rotationAxis = Vector3.zero;
-            var angle = 90f;
+            Vector3 rotationAxis = Vector3.zero;
+            float angle = 90f;
             
-            var left = - _mainCamera.transform.right;
-            var up = _mainCamera.transform.up;
+            // Convert screen drag to world space direction
+            Vector3 dragStart3D = _mainCamera.ScreenToWorldPoint(new Vector3(_dragStartPos.x, _dragStartPos.y, _mainCamera.WorldToScreenPoint(_selectedCubie.position).z));
+            Vector3 dragEnd3D = _mainCamera.ScreenToWorldPoint(new Vector3(_dragStartPos.x + dragVector.x, _dragStartPos.y + dragVector.y, _mainCamera.WorldToScreenPoint(_selectedCubie.position).z));
+            Vector3 worldDragDirection = (dragEnd3D - dragStart3D).normalized;
 
-            if (Mathf.Abs(Vector2.Dot(dragVector.normalized, (Vector2)left))
-                > Mathf.Abs(Vector2.Dot(dragVector.normalized, (Vector2)up)))
-            {
-                rotationAxis = Vector3.Cross(_selectedFaceNormal, left).normalized;
-                if (Vector3.Dot(dragVector, left) < 0) 
-                    angle = -angle;
-            }
-            else
-            {
-                rotationAxis = Vector3.Cross(_selectedFaceNormal, up).normalized;
-                if (Vector3.Dot(dragVector, up) < 0)
-                    angle = -angle;
-            }
+            // Calculate rotation axis as cross product of face normal and drag direction
+            rotationAxis = Vector3.Cross(_selectedFaceNormal, worldDragDirection).normalized;
+            
+            // Determine rotation direction based on the drag direction relative to world drag
+            if (Vector3.Dot(worldDragDirection, dragEnd3D - dragStart3D) < 0)
+                angle = -angle;
 
+            // Reset selected pivot
+            selectedPivot = null;
+            
+            // Find the best matching pivot from overlapping pivots
+            float bestMatch = -1f;
             foreach (var candidatePivot in _overlappingPivots)
             {
-                if (candidatePivot.GetComponent<Pivot>().rotationAxis == rotationAxis)
+                Vector3 pivotAxis = candidatePivot.GetComponent<Pivot>().rotationAxis.normalized;
+                
+                // Check alignment with calculated rotation axis
+                float dot = Mathf.Abs(Vector3.Dot(rotationAxis, pivotAxis));
+                
+                if (dot > bestMatch && dot > 0.8f) // Threshold for axis alignment
+                {
+                    bestMatch = dot;
                     selectedPivot = candidatePivot;
+                    
+                    // Adjust angle direction based on axis alignment
+                    if (Vector3.Dot(rotationAxis, pivotAxis) < 0)
+                        angle = -angle;
+                }
             }
             
-            Debug.Log(rotationAxis);
-            Debug.Log(selectedPivot?.name);
-            SetSlice(selectedPivot);
-            StartCoroutine(RotateSlice(selectedPivot?.transform, rotationAxis, angle));
+            Debug.Log($"Calculated Rotation Axis: {rotationAxis}");
+            Debug.Log($"World Drag Direction: {worldDragDirection}");
+            Debug.Log($"Selected Pivot: {selectedPivot?.name}");
+            Debug.Log($"Angle: {angle}");
+            
+            if (selectedPivot != null)
+            {
+                SetSlice(selectedPivot);
+                StartCoroutine(RotateSlice(selectedPivot.transform, selectedPivot.GetComponent<Pivot>().rotationAxis, angle));
+            }
         }
         
         private void SetSlice(Collider selectedPivot)
@@ -141,7 +155,6 @@ namespace Controllers
             foreach (var cubieCollider in cubies)
             {
                 cubieCollider.transform.SetParent(selectedPivot.transform);
-                Debug.Log(cubieCollider.name);
             }
         }
         
@@ -154,7 +167,7 @@ namespace Controllers
             Quaternion deltaRotation = Quaternion.AngleAxis(angle, worldAxis);
             Quaternion endRotation = startRotation * deltaRotation;
 
-            float duration = 0.3f;
+            float duration = 0.15f;
             float elapsed = 0f;
 
             while (elapsed < duration)
@@ -168,6 +181,7 @@ namespace Controllers
             slice.localRotation = endRotation;
 
             yield return new WaitForEndOfFrame();
+            slice.SetParent(transform);
             slice.DetachChildren();
         }
         
@@ -181,5 +195,4 @@ namespace Controllers
             Gizmos.DrawWireCube(Vector3.zero, selectedPivot.bounds.extents * 2);
         }
     }
-    
 }
